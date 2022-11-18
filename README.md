@@ -1,8 +1,18 @@
-[TOC]
+<!-- MarkdownTOC autoanchor="true" autolink="true" -->
+
+- [learn-react](#learn-react)
+    - [前言 第一次提交](#%E5%89%8D%E8%A8%80-%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%90%E4%BA%A4)
+        - [配置 使用personal access token](#%E9%85%8D%E7%BD%AE-%E4%BD%BF%E7%94%A8personal-access-token)
+        - [添加忽略文件](#%E6%B7%BB%E5%8A%A0%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6)
+
+<!-- /MarkdownTOC -->
+
+<a id="learn-react"></a>
 # learn-react
 学习React记录
 >项目中代码都来自于学习网络上视频或教程，本人前端完全不会从0开始，希望大家都能学有所成。
 
+<a id="%E5%89%8D%E8%A8%80-%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%90%E4%BA%A4"></a>
 ##### 前言 第一次提交
 github 的相关操作也是从0开始学习，第一次提交也是一波三折
 1. LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:44 <br/>
@@ -15,6 +25,7 @@ git config --global --unset http.proxy
 2. remote: Support for password authentication was removed on August 13, 2021. 密码模式被移除了
     解决方案有 使用ssh免密登录、使用personal access token，我选择了使用 使用personal access token
 
+<a id="%E9%85%8D%E7%BD%AE-%E4%BD%BF%E7%94%A8personal-access-token"></a>
 ###### 配置 使用personal access token
 登录 github，按照如下路径：<br/>
 >Settings => Developer Settings => Personal Access Token => Generate New Token  => 填写表格 => Generate token => 复制PAT
@@ -28,6 +39,7 @@ Click on the Spotlight icon (magnifying glass) on the right side of the menu bar
 
 密码就使用复制的 PAT，随后提交中也要使用 PAT 码，跌跌撞撞第一次提交终于成功了！
 
+<a id="%E6%B7%BB%E5%8A%A0%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"></a>
 ###### 添加忽略文件
 新创建 .gitignore 文件 添加忽略文件
 ```bash
@@ -45,3 +57,5 @@ logs
 .vscode/
 *.sw*
 ```
+
+
