@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learn-06-类组件-state属性</title>
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+<script type="text/babel">
+    // React 中要求 类组件需继承 React.component
+    class Weather extends React.Component{
+        // 调用 1 次
+        constructor(props) {
+            super(props);
+            this.state = {isHot: false};
+            // 解决 this 调用 undefined
+            this.changeWeather = this.changeWeather.bind(this);
+        }
+        // 调用 1+n 次，第一次 组件初始化，n 是状态更新的次数
+        render() {
+            // 获取 state 中的 属性
+            const {isHot} = this.state;
+            // 绑定事件
+            return <h2 onClick={this.changeWeather}>今天天气很{this.state.isHot ? '炎热': '凉爽'}</h2>
+        }
+
+        // 1: 类中的方法默认开启了局部的严格模式
+        // 2:：由于 cha是 geWeather 是 onClick 回调 不是通过实例调用 是直接调用
+        // 所以 changeWeather 中 this 为 undefined
+        changeWeather() {
+            console.log(this);
+            console.log("我被点击了");
+            // 注意： 状态 state 不可直接更改 React 会不渲染 需借助内置API更改
+            // this.state.isHot = !this.state.isHot;
+            let wVal = !this.state.isHot;
+            // setState 是合并操作 覆盖相同 key 的值
+            this.setState({isHot: wVal})
+        }
+    }
+    // 渲染 React 会自动 new 该类创建实例 并调用 render() 方法
+    ReactDOM.render(<Weather/>,document.getElementById('test'))
+
+
+</script>
+</html>

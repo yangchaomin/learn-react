@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React学习-05-类组件</title>
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+<script type="text/babel">
+    // React 中要求 类组件需继承 React.component
+    class LearnFun extends React.Component{
+        render() {
+            return <h2>我是类组件</h2>
+        }
+    }
+    // 渲染 React 会自动 new 该类创建实例 并调用 render() 方法
+    ReactDOM.render(<LearnFun/>,document.getElementById('test'))
+</script>
+</html>
