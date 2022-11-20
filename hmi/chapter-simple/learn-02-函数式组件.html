@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React学习-02-函数式组件</title>
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+<script type="text/babel">
+    // JSX 中小写标签会自动匹配 HTML 中的标签，所以这里得大写 避免传入标签时报错
+    function LearnFun(){
+        return <h2>我是函数，也是组件吗？</h2>
+    }
+    // 函数式组件，这里需要传入 上面定义的函数，但是需要做处理 加上标签，所以上面函数得大写命名
+    ReactDOM.render(<LearnFun/>,document.getElementById('test'))
+</script>
+</html>
