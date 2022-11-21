@@ -6,6 +6,10 @@
         - [Github 提交代码很慢、超时](#github-%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E5%BE%88%E6%85%A2%E3%80%81%E8%B6%85%E6%97%B6)
         - [添加忽略文件](#%E6%B7%BB%E5%8A%A0%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6)
         - [目录生成](#%E7%9B%AE%E5%BD%95%E7%94%9F%E6%88%90)
+    - [Learn React](#learn-react-1)
+        - [JSX](#jsx)
+        - [函数式、类式 组件](#%E5%87%BD%E6%95%B0%E5%BC%8F%E3%80%81%E7%B1%BB%E5%BC%8F-%E7%BB%84%E4%BB%B6)
+        - [state 属性](#state-%E5%B1%9E%E6%80%A7)
 
 <!-- /MarkdownTOC -->
 
@@ -90,4 +94,54 @@ autoanchor="true" autolink="true"
 * 再次提交 github ，即可看到目录
 * 后面新增了结构时在 工具 -> MarkdownTOC -> Update TOC 即可更新目录结构
 
+<a id="learn-react-1"></a>
+##### Learn React
 
+<a id="jsx"></a>
+###### JSX
+1.全称:  JavaScript XML
+
+2.react定义的一种类似于XML的JS扩展语法: JS + XML本质是React.createElement(component,props,...children)方法的语法糖
+
+3.作用: 用来简化创建虚拟DOM
+
+* 写法：
+```html
+var ele=<h1>Hello JSX!</h1>
+```
+
+* **注意1：它不是字符串, 也不是HTML/XML标签**
+* **注意2：它最终产生的就是一个JS对象**
+
+4.标签名任意: HTML标签或其它标签
+
+5.标签属性任意: HTML标签属性或其它
+
+6.基本语法规则
+
+* 遇到 <开头的代码, 以标签的语法解析: html同名标签转换为html同名元素, 其它标签需要特别解析
+* 遇到以 { 开头的代码，以JS语法解析: 标签中的js表达式必须用{ }包含
+
+7.babel.js的作用
+
+浏览器不能直接解析JSX代码, 需要babel转译为纯JS的代码才能运行
+只要用了JSX，都要加上type="text/babel", 声明需要babel来处理
+
+<a id="%E5%87%BD%E6%95%B0%E5%BC%8F%E3%80%81%E7%B1%BB%E5%BC%8F-%E7%BB%84%E4%BB%B6"></a>
+###### 函数式、类式 组件
+* **组件名必须首字母大写**
+* **虚拟DOM元素只能有一个根元素**
+* **虚拟DOM元素只能有一个根元素**
+
+<a id="state-%E5%B1%9E%E6%80%A7"></a>
+###### state 属性
+>1.state是组件对象最重要的属性, 值是对象(可以包含多个key-value的组合)
+>
+>2.组件被称为"状态机", 通过更新组件的state来更新对应的页面显示(重新渲染组件)
+
+1. 组件中render方法中的this为组件实例对象
+2. 组件自定义的方法中this为undefined，如何解决？
+*. 强制绑定this: 通过函数对象的bind()
+*. 箭头函数  **箭头函数，没有自己的 this，当在箭头函数中使用 this 时其 this 指向外部**
+
+3. 状态态数据，不能直接修改或更新
