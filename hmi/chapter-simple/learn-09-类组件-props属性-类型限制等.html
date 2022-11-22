@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>learn-08-类组件-props属性</title>
+    <title>learn-09-类组件-props属性-类型限制、默认值设置等</title>
     <script src="../../js/react.development.js"></script>
     <script src="../../js/react-dom.development.js"></script>
     <script src="../../js/babel.min.js"></script>
+    <!--    引入 PropTypes 进行参数验证、限制-->
+    <script src="../../js/prop-types.js"></script>
 </head>
 <body>
 <div id="test1"></div>
@@ -27,10 +29,21 @@
         }
     }
 
-    // 字符串 age
-    ReactDOM.render(<Person name='Tom' age='18' sex='Boy'/>,document.getElementById('test1'));
-    // 数字类型 age
-    ReactDOM.render(<Person name='Jerry' age={18} sex='Girl'/>,document.getElementById('test2'));
+    // 当给对象设置  propTypes 属性时，React 会去解析内部规则
+    Person.propTypes = {
+        name: PropTypes.string.isRequired,
+        age: PropTypes.number,
+        sex: PropTypes.string
+    }
+
+    // 当给对象设置 defaultProps 时，React 会去读取默认值
+    Person.defaultProps = {
+        sex: '未知',
+        age: 10
+    }
+
+    ReactDOM.render(<Person age='18' sex='Boy'/>,document.getElementById('test1'));
+    ReactDOM.render(<Person name='Jerry' sex='Girl'/>,document.getElementById('test2'));
 
     // 批量传递
     let jay = {name: 'jay', age: 18, sex: '男'};

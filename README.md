@@ -145,3 +145,40 @@ var ele=<h1>Hello JSX!</h1>
 *. 箭头函数  **箭头函数，没有自己的 this，当在箭头函数中使用 this 时其 this 指向外部**
 
 3. 状态态数据，不能直接修改或更新
+
+###### props 属性
+1. 类标签上属性传递，通过 `const {name,age,sex} = this.props;` 接收
+2. `...` 展开运算符 更方便快捷的传惨方式
+* 可展开数组 `...Array`
+* 可连接数组 `[...Array1,...Array2]`
+* 函数传惨
+```JS
+function sum(...numbers){
+    // ... 这里 numbers 将是数组,这里快速求和
+    return numbers.reduce((preVal,currVal)=>{
+        return preVal + currVal;
+    })
+}
+console.log(sum(1, 2, 3, 4));
+```
+* 原生展开运算符不能展开对象即 `console.log(...Object)` 会报错，  **使用`{...Object}`时会触发新语法字面量语法，进行对象克隆**
+* babel + react 在标签中进行属性传递时 可就行展开对象 `<Person {...obj}/>`
+
+###### PropTypes 限制标签属性合法性
+```JS
+// 当给对象设置  propTypes 属性时，React 会去解析内部规则
+Person.propTypes = {
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number,
+    sex: PropTypes.string,
+    // 限制函数
+    speak: PropTypes.func
+}
+
+// 当给对象设置 defaultProps 时，React 会去读取默认值
+Person.defaultProps = {
+    sex: '未知',
+    age: 10
+}
+```
+**限制函数时，是使用 func**
