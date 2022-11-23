@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learn-11-函数式组件-props属性</title>
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+    <!--    引入 PropTypes 进行参数验证、限制-->
+    <script src="../../js/prop-types.js"></script>
+</head>
+<body>
+<div id="test1"></div>
+<div id="test2"></div>
+<div id="test3"></div>
+</body>
+<script type="text/babel">
+    function Person(props) {
+        const {name, age, sex} = props;
+        return(
+            <ul>
+                <li>姓名：{name}</li>
+                <li>年龄：{age}</li>
+                <li>性别：{sex}</li>
+            </ul>
+        );
+    }
+
+    Person.propTypes = {
+        name: PropTypes.string.isRequired,
+        age: PropTypes.number,
+        sex: PropTypes.string
+    }
+
+    // 当给对象设置 defaultProps 时，React 会去读取默认值
+    Person.defaultProps = {
+        sex: '未知',
+        age: 10
+    }
+
+
+    ReactDOM.render(<Person name='mo' sex='Boy'/>,document.getElementById('test1'));
+    ReactDOM.render(<Person name='Jerry' age={22} sex='Girl'/>,document.getElementById('test2'));
+
+    // 批量传递
+    let jay = {name: 'jay', age: 18, sex: '男'};
+    ReactDOM.render(<Person {...jay}/>,document.getElementById('test3'))
+</script>
+</html>

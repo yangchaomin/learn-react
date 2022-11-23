@@ -163,6 +163,7 @@ console.log(sum(1, 2, 3, 4));
 ```
 * 原生展开运算符不能展开对象即 `console.log(...Object)` 会报错，  **使用`{...Object}`时会触发新语法字面量语法，进行对象克隆**
 * babel + react 在标签中进行属性传递时 可就行展开对象 `<Person {...obj}/>`
+* props 是只读的
 
 ###### PropTypes 限制标签属性合法性
 ```JS
