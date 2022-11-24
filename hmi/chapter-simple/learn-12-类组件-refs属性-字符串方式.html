@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learn-12-类组件-refs属性-字符串方式</title>
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+    <!--    引入 PropTypes 进行参数验证、限制-->
+    <script src="../../js/prop-types.js"></script>
+</head>
+<body>
+<div id="test1"></div>
+</body>
+<script type="text/babel">
+    class DemoLayout extends React.Component {
+        clickButton = () =>{
+            let {input} = this.refs;
+            alert(input.value);
+        }
+        blurShow = () => {
+            let {blurInput} = this.refs;
+            alert(blurInput.value);
+        }
+        render() {
+            return (
+                <div>
+                    <input ref="input" type="text" placeholder="点击触发"/>
+                    <button onClick={this.clickButton}>点击触发按钮</button>
+                    <input ref="blurInput" onBlur={this.blurShow} type="text" placeholder="失去焦点触发"/>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<DemoLayout/>,document.getElementById("test1"));
+</script>
+</html>
