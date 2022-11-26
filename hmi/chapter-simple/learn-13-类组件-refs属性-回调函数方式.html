@@ -15,11 +15,11 @@
 <script type="text/babel">
     class DemoLayout extends React.Component {
         clickButton = () =>{
-            let {input} = this.refs;
+            let {input} = this;
             alert(input.value);
         }
         blurShow = () => {
-            let {blurInput} = this.refs;
+            let {blurInput} = this;
             alert(blurInput.value);
         }
         render() {
