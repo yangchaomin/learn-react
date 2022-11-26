@@ -183,3 +183,8 @@ Person.defaultProps = {
 }
 ```
 **限制函数时，是使用 func**
+
+##### refs 属性
+1. string 类型 ： 效率不高 不推荐使用
+2. 回调函数 类型
+3. 
