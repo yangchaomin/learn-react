@@ -192,4 +192,4 @@ Person.defaultProps = {
    // 简写方式
    ref={c => this.input = c}
    ```
-3. 
+3. 内联式 ref 和 class 绑定式 区别
