@@ -193,3 +193,4 @@ Person.defaultProps = {
    ref={c => this.input = c}
    ```
 3. 内联式 ref 和 class 绑定式 区别
+4. 由 `React.createRef();`创建的 ref，只能接收一个 ref 指定，重复指定，后面会覆盖之前设定 
