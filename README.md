@@ -193,4 +193,19 @@ Person.defaultProps = {
    ref={c => this.input = c}
    ```
 3. 内联式 ref 和 class 绑定式 区别
-4. 由 `React.createRef();`创建的 ref，只能接收一个 ref 指定，重复指定，后面会覆盖之前设定 
+4. 由 `React.createRef();`创建的 ref，只能接收一个 ref 指定，重复指定，后面会覆盖之前设定
+5. 操作和触发的是一个节点 ref 可省略
+```html
+blurRef = React.createRef();
+blurShow = () => {
+  alert(this.blurRef.current.value);
+}
+<input ref={this.blurRef} onBlur={this.blurShow} type="text" placeholder="失去焦点触发"/>
+
+// 省略写法
+<input onBlur={this.blurShow} type="text" placeholder="失去焦点触发"/>
+blurShow = (event) => {
+  // 触发和操作的是本身 ref 可省略 React 会默认传递 event 对象
+  alert(event.target.value);
+}
+```

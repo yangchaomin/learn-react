@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learn-16-类组件-refs属性-精简写法</title>
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+    <!--    引入 PropTypes 进行参数验证、限制-->
+    <script src="../../js/prop-types.js"></script>
+</head>
+<body>
+<div id="test1"></div>
+</body>
+<script type="text/babel">
+    class DemoLayout extends React.Component {
+
+        // React.createRef(); 创建的 Ref 只能接收一个，重复接收后面会把前面的覆盖掉
+        inputRef = React.createRef();
+
+        clickButton = () =>{
+            alert(this.inputRef.current.value);
+        }
+        blurShow = (event) => {
+            // 触发和操作的是本身 ref 可省略 React 会默认传递 event 对象
+            alert(event.target.value);
+        }
+
+        render() {
+            return (
+                <div>
+                    <input ref={this.inputRef} type="text" placeholder="点击触发"/>
+                    <button onClick={this.clickButton}>点击触发按钮</button>
+                    <input onBlur={this.blurShow} type="text" placeholder="失去焦点触发"/>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<DemoLayout/>,document.getElementById("test1"));
+</script>
+</html>
