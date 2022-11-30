@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learn-17-类组件-函数柯里化</title>
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+    <!--    引入 PropTypes 进行参数验证、限制-->
+    <script src="../../js/prop-types.js"></script>
+</head>
+<body>
+<div id="test1"></div>
+</body>
+<script type="text/babel">
+    class DemoLayout extends React.Component {
+        state = {
+            username : '',
+            password : ''
+        }
+
+        saveFormData = (dataType) => {
+            // 函数的柯里化
+            return (event) => {
+                this.setState({[dataType]: event.target.value})
+            }
+        }
+        handlerSubmit = (event) => {
+            // 阻止表单默认事件
+            event.preventDefault();
+            let {username,password} = this.state;
+            alert(`input username:${username},password:${password}`);
+        }
+        render() {
+            return (
+                <form onSubmit={this.handlerSubmit}>
+                    UserName:<input type="text" name="username" onChange={this.saveFormData('username')}/>
+                    PassWord:<input type="password" name="password" onChange={this.saveFormData('password')}/>
+                    <button>Submit</button>
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(<DemoLayout/>,document.getElementById("test1"));
+</script>
+</html>
